@@ -21,7 +21,26 @@ largest_palindrome_product(X, Y, P) :-
             ),
             Pals),
     max_list(Pals, P).
-   
+
+:- table(lpp/6).
+
+lpp(X, Y, L, H, P) :-
+    lpp(X, Y, L, H, P, 0), !.
+
+lpp(L, L, L, _, P, P) :- !.
+
+lpp(L, Y, L, H, P, Acc) :-
+    Y1 is Y - 1,
+    lpp(H, Y1, L, H, P, Acc), !.
+
+lpp(X, Y, L, H, P, Acc) :-
+    P1 is X * Y,
+    X1 is X - 1,
+    (palindromic_number(P1) ->
+         Acc1 is max(P1, Acc),
+         lpp(X1, Y, L, H, P, Acc1);
+     lpp(X1, Y, L, H, P, Acc)).
+
 main :-
     format("Euler problem 4: Find the largest palindromic product of two three-digit numbers|n"),
     largest_palindrome_product(_, _, P),
