@@ -12,24 +12,17 @@ palindrome_product(X, Y, P) :-
     P is X * Y,
     palindromic_number(P).
 
-largest_palindrome_product(X, Y, P) :- largest_palindrome_product(X, Y, P, 9009).
-    
-largest_palindrome_product(X, Y, Acc, Acc) :- X < 100, Y < 100.
-
-largest_palindrome_product(X, Y, P, Acc) :-
-    X < 100,
-    Y1 is Y-1,
-    largest_palindrome_product(Y1, Y1, P, Acc).
-
-largest_palindrome_product(X, Y, P, Acc) :-
-    palindrome_product(X, Y, P1),
-    Z is max(Acc, P1),
-    largest_palindrome_product(X-1, Y, P, Z).
-    
-largest_palindrome_product(X, Y, P, Acc) :-
-    largest_palindrome_product(X-1, Y, P, Acc).
-    
+largest_palindrome_product(X, Y, P) :-
+    findall(Pal,
+            (
+            between(100, 999, X),
+            between(100, 999, Y),
+            palindrome_product(X, Y, Pal)
+            ),
+            Pals),
+    max_list(Pals, P).
+   
 main :-
     format("Euler problem 4: Find the largest palindromic product of two three-digit numbers|n"),
-    largest_palindrome_product(999, 999, P),
+    largest_palindrome_product(_, _, P),
     format("Solution is ~q~n", P).

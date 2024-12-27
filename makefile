@@ -1,5 +1,5 @@
 run:
-	prolog load.pl
+	swipl load.pl
 
 test:
-	prolog test.pl
+	swipl test.pl

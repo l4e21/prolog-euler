@@ -21,7 +21,7 @@ test(problem_3) :-
 :- use_module("src/problem_4", [largest_palindrome_product/3]).
 
 test(problem_4) :-
-    largest_palindrome_product(999, 999, P),
+    largest_palindrome_product(_, _, P),
     P =:= 906609.
 
 :- use_module("src/problem_5", [smallest_divisible/2]).
@@ -44,5 +44,5 @@ test(problem_7) :-
 
 :- end_tests(euler).
 
-%% main :-
-%%     run_tests.
+main :-
+    run_tests.
