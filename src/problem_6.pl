@@ -5,7 +5,7 @@
 sum_from_to(X1, X2, Sum) :-
     sum_from_to(X1, X2, Sum, 0).
 
-sum_from_to(X2, X1, Sum, Sum) :- X2 > X1.
+sum_from_to(X2, X1, Sum, Sum) :- X2 > X1, !.
 sum_from_to(X1, X2, Sum, Acc) :-
     Acc2 is Acc + X1,
     X11 is X1 + 1,
@@ -18,7 +18,7 @@ square_of_sum(N, X) :-
 sum_squares(X1, X2, Sum) :-
     sum_squares(X1, X2, Sum, 0).
 
-sum_squares(X2, X1, Sum, Sum) :- X2 > X1.
+sum_squares(X2, X1, Sum, Sum) :- X2 > X1, !.
 sum_squares(X1, X2, Sum, Acc) :-
     X1Squared is X1 * X1,
     Acc2 is Acc + X1Squared,

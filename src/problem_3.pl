@@ -26,13 +26,14 @@ lpc(X, LPC) :-
     X > 1,
     lpc(X, 2, LPC).
 
-lpc(1, LPC, LPC).
+lpc(1, LPC, LPC) :- !.
 
 lpc(X, LPC, R) :-
     is_prime(LPC),
     X mod LPC =:= 0,
     X1 is X // LPC,
-    lpc(X1, LPC, R).
+    lpc(X1, LPC, R),
+    !.
 
 lpc(X, LPC, R) :-
     next_prime(LPC, LPC2),

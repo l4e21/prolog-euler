@@ -15,7 +15,7 @@ gen_fibs_between(N, [X|Xs], I) :- fibonacci(I, X), I1 is I + 1, gen_fibs_between
 
 odd(X) :- X mod 2 =:= 1.
 
-solution(N, S) :- gen_fibs_between(N, Xs, 0), remove(problem_2:odd, Xs, Ys), sum_list(Ys, S).
+solution(N, S) :- gen_fibs_between(N, Xs, 0), remove(problem_2:odd, Xs, Ys), sum_list(Ys, S), !.
 
 main :-
     format("Euler problem 2: By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms. ~n"),

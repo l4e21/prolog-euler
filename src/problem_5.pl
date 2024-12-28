@@ -12,7 +12,8 @@ smallest_divisible(X, [], _, _, X).
 
 smallest_divisible(Candidate, [Y|Ys], Xs, N, X) :-
     Candidate mod Y =:= 0,
-    smallest_divisible(Candidate, Ys, Xs, N, X).
+    smallest_divisible(Candidate, Ys, Xs, N, X),
+    !.
 
 smallest_divisible(Candidate, _, Xs, N, X) :-
     Candidate2 is Candidate + N,

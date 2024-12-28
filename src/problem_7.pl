@@ -5,7 +5,7 @@
 nth_prime(N, P) :-
     nth_prime(N, P, 1, 2).
 
-nth_prime(N, P, N, P).
+nth_prime(N, P, N, P) :- !.
 nth_prime(N, P, I, P1) :-
     next_prime(P1, Pnext),
     I1 is I + 1,
